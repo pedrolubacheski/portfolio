@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  top: -20px;
+  animation: animate 5s linear infinite;
+  pointer-events: none;
+}
+
+.star i {
+  font-size: inherit;
+  text-shadow:
+    0 0 3px #302f2f,
+    0 0 7px #474747,
+    0 0 10px #fff;
+  color: #fff;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}

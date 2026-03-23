@@ -5,10 +5,10 @@ function stars() {
   e.setAttribute("class", "star");
 
   let iconeAleatorio = icones[Math.floor(Math.random() * icones.length)];
-  let size = Math.random() * 12 + 8;
-  let duration = Math.random() * 3 + 2;
+  let size = Math.random() * 16 + 13;
+  let duration = Math.random() * 5 + 7;
 
-  e.style.left = Math.random() * window.innerWidth + "px";
+  e.style.left = Math.random() * (window.innerWidth - 100) + "px";
   e.style.fontSize = size + "px";
   e.style.animationDuration = duration + "s";
 
@@ -18,7 +18,20 @@ function stars() {
   e.appendChild(iconElement);
   document.body.appendChild(e);
 
-  setTimeout(() => e.remove(), duration * 1000);
+  setTimeout(() => e.remove(), duration * 800);
 }
 
 setInterval(() => stars(), 200);
+
+const enviarWhats = (event) => {
+  event.preventDefault();
+  const nome = document.getElementById("nome").value;
+  const mensagem = document.getElementById("mensagem").value;
+  const telefone = "5541985232583";
+
+  const texto = `Olá, me chamo ${nome}, ${mensagem}`;
+  const msgFormatada = encodeURIComponent(texto);
+  const url = `https://wa.me/${telefone}?text=${msgFormatada}`;
+
+  window.open(url, "_blank");
+};

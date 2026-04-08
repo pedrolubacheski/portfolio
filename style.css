@@ -205,6 +205,7 @@ main p {
 .paragrafo-projetos {
   font-size: 1rem;
   color: var(--cor-texto-secundario);
+  margin-top: 10px;
 }
 
 #contatos {

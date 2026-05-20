@@ -224,7 +224,7 @@ export default function Hero() {
               }}
             >
               <img
-                src="/src/img/profile.png"
+                src="./img/profile.png"
                 alt="Foto de Pedro Lubacheski"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 onError={(e) => {

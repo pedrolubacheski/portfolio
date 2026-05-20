@@ -4,7 +4,7 @@
 
 ### Engenheiro de Software | Dev Frontend | Amante de UI/UX
 
-[![Portfolio](https://img.shields.io/badge/🌐_Ver_Portfólio-8b5cf6?style=for-the-badge)](https://pedrolubacheski.github.io)
+[![Portfolio](https://img.shields.io/badge/🌐_Ver_Portfólio-8b5cf6?style=for-the-badge)](https://pedrolubacheski.github.io/portfolio)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/pedrolubacheski)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pedrolubacheski)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5541985232583)

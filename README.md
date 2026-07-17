@@ -113,9 +113,9 @@ npm run preview  # Prévia do build localmente
 
 ```
 docker run -d -p 8080:80 pedrolubacheski/portfolio-docker:latest
-```
 
-## Acesse no navegador localhost:8080
+Acesse no navegador localhost:8080
+```
 
 ---
 

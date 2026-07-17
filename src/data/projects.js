@@ -25,7 +25,7 @@ const projects = [
     description:
       "Recriação fiel da interface do Spotify com renderização dinâmica de conteúdo, manipulação de DOM avançada e layout pixel-perfect.",
     image: "./img/spotifycloneui.gif",
-    url: "https://pedrolubacheski.github.io/Spotify-Clone-UI/",
+    url: "https://pedrolubacheski.github.io/Music-Clone-UI/",
     tags: ["HTML5", "CSS3", "JavaScript", "UI Clone"],
     gradient: "linear-gradient(135deg, #052e16, #14532d, #166534)",
   },

@@ -38,14 +38,14 @@ Refatorado do zero a partir de uma versão anterior em HTML/CSS/JS puro, com arq
 
 ## 🛠️ Tecnologias
 
-| Tecnologia | Uso |
-|---|---|
-| **React 18** | Componentização e gerenciamento de estado |
-| **Vite 6** | Bundler e dev server ultra-rápido |
+| Tecnologia                    | Uso                                                |
+| ----------------------------- | -------------------------------------------------- |
+| **React 18**                  | Componentização e gerenciamento de estado          |
+| **Vite 6**                    | Bundler e dev server ultra-rápido                  |
 | **CSS Modules / globals.css** | Estilização com variáveis, keyframes e utilitários |
-| **IntersectionObserver API** | Scroll reveal nativo, sem dependência externa |
-| **Font Awesome 6** | Ícones das tecnologias e UI |
-| **Google Fonts** | Orbitron · Rajdhani · JetBrains Mono |
+| **IntersectionObserver API**  | Scroll reveal nativo, sem dependência externa      |
+| **Font Awesome 6**            | Ícones das tecnologias e UI                        |
+| **Google Fonts**              | Orbitron · Rajdhani · JetBrains Mono               |
 
 ---
 
@@ -85,7 +85,7 @@ portfolio/
 
 ## 🚀 Como rodar localmente
 
-```bash
+````bash
 # 1. Clone o repositório
 git clone https://github.com/pedrolubacheski/portfolio.git
 cd portfolio
@@ -101,7 +101,21 @@ npm run dev
 ```bash
 npm run build    # Gera a pasta dist/
 npm run preview  # Prévia do build localmente
+````
+
+---
+
+## 🐋 Como rodar por Docker
+
+### Tenha docker instalado
+
+### Rode dentro do powershell:
+
 ```
+docker run -d -p 8080:80 pedrolubacheski/portfolio-docker:latest
+```
+
+## Acesse no navegador localhost:8080
 
 ---
 

@@ -1,61 +1,45 @@
+import { publicAsset } from "../utils/assets";
+
 const projects = [
   {
-    id: 1,
-    title: "Interactive Drink Slider UI",
-    description:
-      "Interface interativa com slider dinâmico de produtos, animações suaves e manipulação de DOM. Navegação fluida entre itens com transições CSS elaboradas.",
-    image: "./img/projetorefri.gif",
-    url: "https://pedrolubacheski.github.io/InteractiveDrinkSliderUI/",
-    tags: ["HTML5", "CSS3", "JavaScript", "DOM"],
-    gradient: "linear-gradient(135deg, #1e1b4b, #4c1d95, #2e1065)",
-  },
-  {
-    id: 2,
-    title: "Coffee Landing Page",
-    description:
-      "Landing page premium de cafeteria com seções de menu, avaliações e contato. Layout responsivo com Flexbox & Grid e atenção total à UX.",
-    image: "./img/coffeelandinpage.gif",
-    url: "https://pedrolubacheski.github.io/coffee-landing-page/",
-    tags: ["HTML5", "CSS3", "Flexbox", "Grid"],
-    gradient: "linear-gradient(135deg, #1c1008, #44200a, #78350f)",
-  },
-  {
-    id: 3,
-    title: "Spotify UI Clone",
-    description:
-      "Recriação fiel da interface do Spotify com renderização dinâmica de conteúdo, manipulação de DOM avançada e layout pixel-perfect.",
-    image: "./img/spotifycloneui.gif",
-    url: "https://pedrolubacheski.github.io/Music-Clone-UI/",
-    tags: ["HTML5", "CSS3", "JavaScript", "UI Clone"],
-    gradient: "linear-gradient(135deg, #052e16, #14532d, #166534)",
-  },
-  {
-    id: 4,
-    title: "Girassol Terapias Landing Page",
-    description:
-      "Interface construída com componentes reutilizáveis em React, estilização com TailwindCSS e organização modular baseada em seções. Implementação de navegação suave entre seções, responsividade para diferentes dispositivos e foco em boas práticas de UI/UX.",
-    image: "./img/girassolterapias.gif",
+    title: "Espaço Girassol",
+    type: "Landing page",
+    image: publicAsset("img/girassolterapias.gif"),
     url: "https://pedrolubacheski.github.io/girassol-terapias-landim/",
-    tags: ["React", "TailwindCSS", "UI/UX", "Responsive Design"],
-    gradient: "linear-gradient(135deg, #563A24, #FFEFB3, #F1BF4C)",
+    description: "Landing page responsiva para um centro de terapias, construída em React e Tailwind CSS, com navegação por âncoras e rolagem suave.",
+    tags: ["React", "Tailwind CSS"],
   },
   {
-    id: 5,
+    title: "Coffee Landing Page",
+    type: "Interface web",
+    image: publicAsset("img/coffeelandinpage.gif"),
+    url: "https://pedrolubacheski.github.io/coffee-landing-page/",
+    description: "Página responsiva desenvolvida em HTML e CSS, estruturada com Flexbox e Grid.",
+    tags: ["HTML", "CSS", "Flexbox", "Grid"],
+  },
+  {
+    title: "Interactive Drink Slider UI",
+    type: "Estudo de interface",
+    image: publicAsset("img/projetorefri.gif"),
+    url: "https://pedrolubacheski.github.io/InteractiveDrinkSliderUI/",
+    description: "Interface de estudo com slider dinâmico, transições e manipulação de DOM em JavaScript.",
+    tags: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    title: "Spotify UI Clone",
+    type: "Estudo de interface",
+    image: publicAsset("img/spotifycloneui.gif"),
+    url: "https://pedrolubacheski.github.io/Music-Clone-UI/",
+    description: "Clone de interface de aplicação real para estudo de layout e interação com HTML, CSS e JavaScript.",
+    tags: ["HTML", "CSS", "JavaScript"],
+  },
+  {
     title: "Fullstack User CRUD",
-    description:
-      "Aplicação fullstack para gerenciamento de usuários, com operações completas de CRUD (Create, Read, Update, Delete). Projeto focado na comunicação entre frontend e backend, consumo de API e persistência de dados em banco NoSQL, com estrutura organizada e fluxo completo de requisições.",
-    image: "./img/fullstackusercrud.png",
+    type: "Aplicação fullstack",
+    image: publicAsset("img/fullstackusercrud.png"),
     url: "https://github.com/pedrolubacheski/fullstack-user-crud",
-    tags: [
-      "React",
-      "Node.js",
-      "Express",
-      "Prisma ORM",
-      "MongoDB",
-      "Rest API",
-      "JavaScript",
-    ],
-    gradient: "linear-gradient(135deg, #346868, #469292, #53c7c7)",
+    description: "Aplicação para gerenciamento de usuários, com foco em organização de dados e operações de CRUD.",
+    tags: ["React", "Node.js", "MongoDB"],
   },
 ];
 

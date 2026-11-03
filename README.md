@@ -38,20 +38,20 @@ Refatorado do zero a partir de uma versão anterior em HTML/CSS/JS puro, com arq
 
 ## 🛠️ Tecnologias
 
-| Tecnologia                    | Uso                                                |
-| ----------------------------- | -------------------------------------------------- |
-| **React 18**                  | Componentização e gerenciamento de estado          |
-| **Vite 6**                    | Bundler e dev server ultra-rápido                  |
+| Tecnologia | Uso |
+| :--- | :--- |
+| **React 18** | Componentização e gerenciamento de estado |
+| **Vite 6** | Bundler e dev server ultra-rápido |
 | **CSS Modules / globals.css** | Estilização com variáveis, keyframes e utilitários |
-| **IntersectionObserver API**  | Scroll reveal nativo, sem dependência externa      |
-| **Font Awesome 6**            | Ícones das tecnologias e UI                        |
-| **Google Fonts**              | Orbitron · Rajdhani · JetBrains Mono               |
+| **IntersectionObserver API** | Scroll reveal nativo, sem dependência externa |
+| **Font Awesome 6** | Ícones das tecnologias e UI |
+| **Google Fonts** | Orbitron · Rajdhani · JetBrains Mono |
 
 ---
 
 ## 📁 Estrutura do Projeto
 
-```
+```text
 portfolio/
 ├── public/
 │   └── img/                    # Imagens e GIFs dos projetos
@@ -79,56 +79,3 @@ portfolio/
 ├── index.html
 ├── package.json
 └── vite.config.js
-```
-
----
-
-## 🚀 Como rodar localmente
-
-````bash
-# 1. Clone o repositório
-git clone https://github.com/pedrolubacheski/portfolio.git
-cd portfolio
-
-# 2. Instale as dependências
-npm install
-
-# 3. Inicie o servidor de desenvolvimento
-npm run dev
-
-### Build para produção
-
-```bash
-npm run build    # Gera a pasta dist/
-npm run preview  # Prévia do build localmente
-````
-
----
-
-## 🐋 Como rodar por Docker
-
-### Tenha docker instalado
-
-### Rode dentro do powershell:
-
-```
-docker run -d -p 8080:80 pedrolubacheski/portfolio-docker:latest
-
-Acesse no navegador localhost:8080
-```
-
----
-
-## 📬 Contato
-
-- 💬 **WhatsApp:** [+55 41 98523-2583](https://wa.me/5541985232583)
-- 💼 **LinkedIn:** [linkedin.com/in/pedrolubacheski](https://linkedin.com/in/pedrolubacheski)
-- 🐙 **GitHub:** [github.com/pedrolubacheski](https://github.com/pedrolubacheski)
-
----
-
-<div align="center">
-
-Feito com ❤️ por **Pedro Lubacheski**
-
-</div>

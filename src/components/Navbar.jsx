@@ -1,64 +1,163 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
-const navigation = [
-  ["Perfil", "#sobre"],
-  ["Projetos", "#projetos"],
-  ["Contato", "#contato"],
+const NAV_LINKS = [
+  { id: "inicio", label: "Início" },
+  { id: "sobre", label: "Sobre" },
+  { id: "projetos", label: "Projetos" },
+  { id: "contato", label: "Contato" },
 ];
 
-export default function Navbar({ theme, onThemeChange }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+const GITHUB = "https://github.com/pedrolubacheski";
 
+export default function Navbar() {
+  const [active, setActive] = useState("inicio");
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const listRef = useRef(null);
+  const indicatorRef = useRef(null);
+
+  /* Esconde ao rolar para baixo, mostra ao rolar para cima */
   useEffect(() => {
-    const updateScrollState = () => setIsScrolled(window.scrollY > 24);
-    updateScrollState();
-    window.addEventListener("scroll", updateScrollState, { passive: true });
-    return () => window.removeEventListener("scroll", updateScrollState);
+    let lastY = window.scrollY;
+    let raf = null;
+    const update = () => {
+      raf = null;
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      if (Math.abs(y - lastY) > 6) {
+        setHidden(y > lastY && y > 240);
+        lastY = y;
+      }
+    };
+    const onScroll = () => {
+      if (raf === null) raf = requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  /* Destaca a seção visível */
+  useEffect(() => {
+    const sections = NAV_LINKS.map((l) => document.getElementById(l.id)).filter(
+      Boolean,
+    );
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    sections.forEach((s) => obs.observe(s));
+    return () => obs.disconnect();
+  }, []);
+
+  /* Move a pílula de destaque até o link ativo */
+  useLayoutEffect(() => {
+    const place = () => {
+      const list = listRef.current;
+      const ind = indicatorRef.current;
+      if (!list || !ind) return;
+      const link = list.querySelector(`[data-id="${active}"]`);
+      if (!link) return;
+      ind.style.width = `${link.offsetWidth}px`;
+      ind.style.transform = `translateX(${link.offsetLeft}px)`;
+    };
+    place();
+    document.fonts?.ready.then(place);
+    window.addEventListener("resize", place);
+    return () => window.removeEventListener("resize", place);
+  }, [active]);
+
+  /* Menu mobile: trava a rolagem e fecha com Esc */
+  useEffect(() => {
+    document.documentElement.classList.toggle("menu-open", menuOpen);
+    if (!menuOpen) return;
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
+  const classes = [
+    "nav",
+    scrolled && "nav--scrolled",
+    hidden && !menuOpen && "nav--hidden",
+    menuOpen && "nav--open",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <header className={`topbar ${isScrolled ? "topbar--solid" : ""}`}>
-      <nav className="nav-wrap" aria-label="Navegação principal">
-        <a className="brand" href="#inicio" aria-label="Ir ao início">
-          PL<span>_</span>
+    <header className={classes}>
+      <div className="nav__bar">
+        <a href="#inicio" className="nav__brand" aria-label="Pedro Lubacheski, voltar ao início">
+          <span className="nav__mark">PL</span>
+          <span className="nav__name">Pedro Lubacheski</span>
         </a>
 
-        <div className="nav-links">
-          {navigation.map(([label, href], index) => (
-            <a key={href} href={href}>
-              <small>0{index + 1}</small>
-              {label}
-            </a>
-          ))}
-        </div>
+        <nav className="nav__center" aria-label="Seções">
+          <div ref={listRef} className="nav__track">
+          <span ref={indicatorRef} className="nav__indicator" aria-hidden="true" />
+          <ul className="nav__list">
+            {NAV_LINKS.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={`#${link.id}`}
+                  data-id={link.id}
+                  className={`nav__link ${active === link.id ? "is-active" : ""}`}
+                  aria-current={active === link.id ? "true" : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          </div>
+        </nav>
 
-        <div className="nav-actions">
-          <button
-            className="theme-switch"
-            type="button"
-            onClick={onThemeChange}
-            aria-label="Alternar tema visual"
-          >
-            <i className={`fa-solid ${theme === "professional" ? "fa-microchip" : "fa-briefcase"}`} aria-hidden="true" />
-            <span>{theme === "professional" ? "Modo cyber" : "Modo pro"}</span>
-          </button>
-          <a className="nav-github" href="https://github.com/pedrolubacheski" target="_blank" rel="noreferrer">
-            GitHub <span>↗</span>
+        <div className="nav__end">
+          <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="nav__github">
+            <i className="fab fa-github" aria-hidden="true" />
+            <span>GitHub</span>
           </a>
-          <button className="menu-button" type="button" aria-expanded={isMenuOpen} aria-label="Abrir menu" onClick={() => setIsMenuOpen((open) => !open)}>
-            <i className={`fa-solid ${isMenuOpen ? "fa-xmark" : "fa-bars"}`} aria-hidden="true" />
+          <button
+            type="button"
+            className="nav__toggle"
+            aria-expanded={menuOpen}
+            aria-controls="menu-mobile"
+            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            <span />
+            <span />
           </button>
         </div>
-      </nav>
+      </div>
 
-      {isMenuOpen && (
-        <div className="mobile-menu">
-          {navigation.map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setIsMenuOpen(false)}>{label}</a>
+      <div id="menu-mobile" className="nav__overlay" aria-hidden={!menuOpen}>
+        <ul>
+          {NAV_LINKS.map((link, i) => (
+            <li key={link.id} style={{ "--i": i }}>
+              <a
+                href={`#${link.id}`}
+                tabIndex={menuOpen ? 0 : -1}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            </li>
           ))}
+        </ul>
+        <div className="nav__overlay-foot" style={{ "--i": NAV_LINKS.length }}>
+          <a href={GITHUB} target="_blank" rel="noopener noreferrer" tabIndex={menuOpen ? 0 : -1}>
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/pedro-lubacheski-5b80912b7" target="_blank" rel="noopener noreferrer" tabIndex={menuOpen ? 0 : -1}>
+            LinkedIn
+          </a>
         </div>
-      )}
+      </div>
     </header>
   );
 }
